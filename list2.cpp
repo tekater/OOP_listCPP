@@ -10,7 +10,7 @@ using namespace std;
 
 struct Node {
     int val;
-    Node *next;
+    Node* next;
     Node* back;
 };
 
@@ -55,6 +55,27 @@ public:
         }
 
         head = temp;
+    }
+
+    void Insert(int pos,int x) {
+        Node* ins = head;
+        for (int i = 0; i < pos; i++) {
+            if (ins->next != nullptr)
+            {
+                ins = ins->next;
+            }
+            else {
+                ins = nullptr;
+            }
+        }
+        if (ins->next != nullptr)
+        {
+            ins->back = ins->next;
+        }
+        else {
+            ins->back = nullptr;
+        }
+        ins->val = x;
     }
 
     void PopHead() {
@@ -125,7 +146,7 @@ public:
         return -1;
     }
 
-    void setElem(int n,int x) {
+    void setElem(int n, int x) {
         int ind = 0;
         Node* copyhead = head;
         while (copyhead != nullptr) {
@@ -171,7 +192,7 @@ public:
         Clear();
     }
 
-    int operator[](int n) const{
+    int operator[](int n) const {
         int ind = 0;
         Node* copyhead = head;
         while (copyhead != nullptr) {
@@ -202,7 +223,7 @@ public:
         return a;
     }
 
-    
+
 
 };
 
@@ -222,7 +243,7 @@ int main() {
     l2.printTail(); cout << endl;
 
     l2.PopTail(); l2.printHead(); l2.printTail(); cout << endl;
-    //l2.PopHead(); l2.printHead();
+    
 
     l2.Clear(); l2.printHead();
 
@@ -235,4 +256,5 @@ int main() {
     l2.printHead();
     l2.Del(2);
     l2.printHead();
+
 }
